@@ -1,0 +1,74 @@
+<?php
+
+function wim2a_menu(){
+    $items ['wim2a/page1/%'] = array (
+        'page callback' => 'wim2a_page1',
+        'access arguments' => array ('access content'),
+        'type'=> MENU_CALLBACK,
+    );    
+    $items['wim2a/monformulaire'] = array(  
+        'title' => 'Mon Formulaire',  
+        'page callback' => 'drupal_get_form',  
+        'page arguments' => array('wim2a_monformulaire'),  
+        'access callback' => true,  
+        'type' => MENU_CALLBACK,
+    );
+    $items['wim2a/pageformulaire'] = array(  
+        'title' => 'Page Formulaire',  
+        'page callback' => 'pageformulaire', //erreur?  
+        'access callback' => true,  'type' => MENU_CALLBACK,
+    );
+
+    return $items;
+}
+
+
+function wim2a_page1($arg='none') {  
+    $outputs['arg'] = $arg;  
+    $outputs['request_uri'] = $_SERVER['REQUEST_URI'];  
+    $outputs['query_string'] = $_SERVER['QUERY_STRING'];  
+    $outputs['path_info'] = isset($_SERVER['PATH_INFO']) ? $_SERVER['PATH_INFO']                                                                                               
+                                                        : 'non défini';  
+     $outputs['script_name'] = $_SERVER['SCRIPT_NAME'];  
+     $str = '';  foreach($outputs as $key => $value) {    
+         $str .= $key . '<br>' . $value . '<br><br>';  
+        }  
+        return $str;
+    }
+function wim2a_monformulaire($form, &$form_state) { 
+
+
+    $form['Mon formulaire'] = array(     
+        '#title' => 'Nom',    
+        '#type' => 'textfield',
+    );
+     
+    $form['valider'] = array(
+    '#type' => 'validate',
+    ); 
+    
+    $form['submit'] = array(
+        '#type' =>'submit',
+        '#value' => t('Soumettre'),
+
+    );
+        return $form;
+}
+function wim2a_pageformulaire() {  
+    $form = array();  
+    $form_state = array();  
+    $page_array['paragraphe1'] = array(      
+        '#prefix' => '<p>',      
+        '#suffix' => '</p>',      
+        '#markup' => 'Paragraphe avant le formulaire',  
+    );  
+    $page_array['form'] = drupal_get_form('wim2a_monformulaire');  
+    $page_array['paragraphe2'] = array(      
+        '#prefix' => '<p>',      
+        '#suffix' => '</p>',      
+        '#markup' => 'Paragraphe après le formulaire',  
+    );  return $page_array;
+    
+}
+    
+?>

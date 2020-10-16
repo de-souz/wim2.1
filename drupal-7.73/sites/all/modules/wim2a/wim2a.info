@@ -1,0 +1,5 @@
+name = Module 1
+description = "Module wim2"
+package  = wim2a
+core = 7.x
+files [] = wim2a.module

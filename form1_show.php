@@ -9,10 +9,21 @@
 ?>
 <form  method="post" action="form2_submit.php">    
     <p>      
-        <label for="nom">Nom : </label>      <input type="text" name="nom" id="nom">    </p>
-        <p>      <label for="prenom">Prénom : </label>      <input type="text" name="prenom" id="prenom">    </p>
-        
-        <p style="text-align: center">      <input type="submit" value="Valider">    </p>    
-        <input type="hidden" name="form_id"            value="<?php print $_SESSION['form_id'];?>">
+        <label for="nom">Nom : </label>      
+        <input type="text" name="nom" id="nom">    
+    </p>
+    <p>      
+        <label for="prenom">Prénom : </label>     
+        <input type="text" name="prenom" id="prenom">    
+    </p>
+    
+    <p>
+        <input type="radio" name="sexe" value="homme" /> Homme 
+        <input type="radio" name="sexe" value="femme" /> Femme
+     </p>   
+    <p style="text-align: center">      <input type="submit" value="Valider">   
+    </p>    
+        <input type="hidden" name="form_id"           
+             value="<?php print $_SESSION['form_id'];?>">
 </form>
 </body></html>

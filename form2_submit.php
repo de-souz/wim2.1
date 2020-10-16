@@ -17,12 +17,14 @@ if(!isset($_POST) || !isset($_POST['form_id'])
     if( !empty($_SESSION['error_message'] )) {  
         header( 'Location: form1_show.php' ) ;
     }//Enregistrement si tout est OK
-    else {  $pdo = new PDO('mysql:host=localhost;dbname=drupalXX', 'root', '');  
+    else {  
+        $pdo = new PDO('mysql:host=localhost;dbname=drupalXX', 'root', ' ');  
         $sql = 'INSERT INTO wim2_etudiant (nom, prenom) VALUES (:nom,:prenom)';  
         $stmt = $pdo->prepare($sql);  $nb_insert = $stmt->execute($values);  
         //Test erreur d'insertion  
         if($nb_insert == 0) {    
-            $_SESSION['error_message'][] ='Erreur BD';    header( 'Location: form1_show.php' ); 
+            $_SESSION['error_message'][] ='Erreur BD';    
+            header( 'Location: form1_show.php' ); 
          }  
          //Confirmation de l'insertion  
          else {    
@@ -33,3 +35,4 @@ if(!isset($_POST) || !isset($_POST['form_id'])
             </body></html>';  
         }
     }
+  
