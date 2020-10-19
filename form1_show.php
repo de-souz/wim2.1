@@ -16,11 +16,7 @@
         <label for="prenom">Prénom : </label>     
         <input type="text" name="prenom" id="prenom">    
     </p>
-    
-    <p>
-        <input type="radio" name="sexe" value="homme" /> Homme 
-        <input type="radio" name="sexe" value="femme" /> Femme
-     </p>   
+
     <p style="text-align: center">      <input type="submit" value="Valider">   
     </p>    
         <input type="hidden" name="form_id"           
